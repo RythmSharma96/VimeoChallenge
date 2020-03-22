@@ -1,2 +1,0 @@
-# VimeoChallenge
-Created with CodeSandbox

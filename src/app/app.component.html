@@ -1,0 +1,59 @@
+<div [hidden]="!dataSource">
+  Search below:
+  <div fxLayout fxLayoutAlign="center center">
+    <mat-form-field fxFlex="30%" style="background-color: grey;">
+      <input matInput type="text" (keyup)="doFilter($event.target.value)" />
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Account No">
+      <mat-header-cell *matHeaderCellDef>Account No</mat-header-cell>
+      <mat-cell *matCellDef="let details">{{ details["Account No"] }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+      <mat-cell *matCellDef="let details">{{ details["Date"] }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Transaction Details">
+      <mat-header-cell *matHeaderCellDef>Transaction Details</mat-header-cell>
+      <mat-cell *matCellDef="let details">
+        {{ details["Transaction Details"] }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Value Date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Value Date</mat-header-cell
+      >
+      <mat-cell *matCellDef="let details">
+        {{ details["Value Date"] }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Withdrawal AMT">
+      <mat-header-cell *matHeaderCellDef>Withdrawal AMT</mat-header-cell>
+      <mat-cell *matCellDef="let details">
+        {{ details["Withdrawal AMT"] }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Balance AMT">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Balance AMT</mat-header-cell
+      >
+      <mat-cell *matCellDef="let details">
+        {{ details ["Balance AMT"] }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row
+      *matHeaderRowDef="DisplayColumns"
+      color="primary"
+    ></mat-header-row>
+    <mat-row *matRowDef="let Row; columns: DisplayColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10"> </mat-paginator>
+</div>
